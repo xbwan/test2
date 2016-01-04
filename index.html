@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理内容页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="address=no">
+    <link rel="stylesheet" href="css/base_tel.css">
+    
+<body class="bodycolor"> 
+ 
+    <div class="wrap">
+        <h3 class="sign_hd">
+            <img src="images/b1.jpg" width="100%">
+        </h3>
+        <div  class="sign_area">
+            <h3 class="sign_area_hd">活动介绍防辐射范德萨</h3>
+            <div class="sign_area_text1">
+                <p>春光正好，花鸟岛的海鸟和飞鱼在等你！海边的清新空气，唯美的山海风光，最有特色海岛民宿，透骨新鲜的海鲜大餐~~统统为你私人定制！</p>
+                <p style="margin-top:7px;">报名时间：3月10日至4月15日</p>
+                <p>活动时间：4月24日至4月26日</p>
+                <p>名单公布时间：4月18日</p>
+                
+                <p style="margin-top:7px;">体验名额：130个（每个ID一个名额）</p>
+                <p>体验项目：交通+景点+海鲜大餐费用全免</p>
+                <p>活动交流QQ群：92844204</p>
+
+                <p style="margin-top:7px;">嵊泗花鸟岛3天2晚体验游，</p>
+                <p style="color:red;">费用：0元！</p>
+                <p>快来报名,和我们共同开启一场逃离穹顶的探秘约会吧！</p>
+            
+
+
+            </div>
+            <h3 class="sign_area_hd">活动报名须知</h3>
+            <div class="sign_area_text1 sign_area_text2">
+                <p>完成个人信息填写，并上传本人作品一张（附加文字描述），活动组将从优秀作品中选出本次花鸟探秘的体验用户。</p> 
+               
+            </div>
+        
+            <h3 class="sign_area_hd">填写报名表即可报名参加</h3>
+            <div class="sign_area_text1 ">
+                <div class="infotext pr"  id="name1">
+                    <span class="infotext_pic infotextpic1"></span> 
+                    <input type="text" value=""   id="name" placeholder="请输入姓名"> 
+                </div> 
+                <div class="infotext_tip"><span></span>姓名不能为空</div>
+
+                <div class="infotext pr" id="sex1">
+                    <span class="infotext_pic infotextpic2"></span> 
+                    <span action="" class="gerenxinxi2">
+                        <input type="radio" name="sex" value="man" id="man" style="display:none;">
+                        <label for="man">先生</label>
+                        <input type="radio" name="sex" value="female" id="female" style="display:none;">
+                        <label for="female">女士</label>
+                    </span>
+                    
+                </div> 
+                <div class="infotext_tip"><span></span>请选择性别</div>
+
+                <div class="infotext pr"  id="tel1">
+                    <span class="infotext_pic infotextpic3"></span> 
+                    <input type="text" value=""     id="tel" placeholder="请输入手机号码"> 
+                    
+                </div> 
+                <div class="infotext_tip"><span></span>请输入正确的手机号码</div>
+
+                <div class="infotext pr" id="QQ1">
+                    <span class="infotext_pic infotextpic4"></span> 
+                    <input type="text" value=""   id="QQ" placeholder="请输入QQ号码">  
+                </div>  
+                <div class="infotext_tip"><span></span>请输入正确的QQ号码</div> 
+                   
+                   <input type="button" value="立即报名" class="sign_bt">
+                
+            </div>
+        </div>
+
+    </div> 
+
+    <!--弹出框-->
+    <div class="sign_win">
+         <img src="images/4.png" height="40"> 恭喜您，报名成功！
+    </div>
+
+
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script> 
+  
+    <script>
+    $(function(){
+         function shadow_layout(shadow_statue) { 
+             if (shadow_statue) {
+              $(".wincover").remove();
+              $("<div class= 'wincover' style='position: fixed; top: 0 px; opacity: 0.7; filter: alpha(opacity = 70); color: red; z-index: 90; background: #000; left: 0px; width: 100%; height: 100%'></div>").prependTo("body");
+             } else {
+              $(".wincover").remove();
+             };
+        };
+
+         var ck_statue = "";/**sex的值**/
+          $(".gerenxinxi2 label").click(function(){
+                var index = $(".gerenxinxi2 label").index($(this));
+                if(index == 0){ck_statue = "男";}else{ck_statue = "女";};
+
+          });
+        $(".sign_bt").bind("click",function(){
+            var cs_name = $("#name").val();
+            var cs_tel = $("#tel").val();
+            var cs_QQ = $("#QQ").val(); 
+            
+                if(cs_name == ""){ 
+                    $("#name1").next().show(); 
+                    return false;
+                }else{
+                     $("#name1").next().hide();  
+                };
+                
+                if(ck_statue == ""){
+                     $("#sex1").next().show();  
+                      return false;
+                  }else{
+                     $("#sex1").next().hide();    
+                  };
+                  var telreg=/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/;
+                  if(!telreg.test(cs_tel)){
+                     $("#tel1").next().show(); 
+                     return false;
+                  }else{
+                     $("#tel1").next().hide(); 
+                    
+                  }
+                  if(isNaN(cs_QQ) || cs_QQ == ""){ 
+                        $("#QQ1").next().show(); 
+                        return false;
+                  }else{ 
+                         $("#QQ1").next().hide();  
+                  };
+                    /****报名成功弹出框***/
+                    shadow_layout(true);
+                    $(".sign_win").show();
+        });    
+
+    });
+ 
+    </script> 
+  <p>dsadsad</p>
+ fsdfs
+</body>
+</html>

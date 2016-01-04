@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理内容页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="address=no">
+    <link rel="stylesheet" href="css/base_tel.css">
+    
+<body class="bodycolor"> 
+ 
+      <div class="img_wrap">
+          <div class="img_content">
+              <div class="area_box2">
+                  <textarea class="img_text" placeholder ="输入名字描述"></textarea>
+              </div>
+              
+              <div class="yjlist_pic pr yjlist_pic2">
+                  <p class="imgupload pr"  >
+                      <input type="file" onchange="imgupload(this)" value=""><span>上传图片</span>
+                  </p>
+                  <canvas class="myCanvas " style="display:none;"></canvas>
+                  <img width="100%" class="imgshow" src="images/back5.jpg" >
+              </div> 
+           
+          </div>
+          
+          <input type="button" value="提交" class="sub_bt" />
+      </div>
+ 
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>  
+    <script>
+     function imgupload(domthis){
+  
+      /****/
+      /**图片上传start**/ 
+           
+           
+            var reader = new FileReader(); /***html5 新类 用来读取文件数据***/
+            reader.readAsDataURL($(domthis).get(0).files[0]); 
+            reader.onload=function(e){ 
+              var dataURL = e.target.result;/**获得路径**/  
+                 
+              var cxt=$(".myCanvas").get(0).getContext("2d");
+              var img=new Image(); 
+              img.src = dataURL;
+              $(".imgshow").attr("src",dataURL);
+              img.onload = function(){  
+                  /*按比例缩小图片*/
+                  var width=img.width,height=img.height,scale=width/height; 
+                  /*定义画布大小*/
+                  $(".myCanvas").attr({'width':width,'height':height}); 
+                  /*生成画布*/
+                  cxt.drawImage(this,0,0,width,height);
+                  /*获得画布的图片数据流*/
+                  
+                  var imgData=$(".myCanvas").get(0).toDataURL("image/jpeg");  
+                   
+                //jQuery.post('/index.php/telfare/view/',{'option':'file','id':'<?php echo empty($this->TelfareRow['id']) ? '' : $this->TelfareRow['id'];?>','data':imgData.substr(22)},function(data){
+                  //jQuery('#showtext').html(data);
+                //});
+              };
+               
+           } 
+          
+        }
+    $(function(){
+       
+        $(".sub_bt").bind("click",function(){
+           
+
+        });
+
+    });
+ 
+    </script> 
+ 
+</body>
+</html>
